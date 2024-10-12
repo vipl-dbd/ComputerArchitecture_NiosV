@@ -11,6 +11,14 @@ Lab 4. Nios V multiprocessor implementation, parallel programming, and performan
 
 Lab 5. Nios V processor with customized architecture for a software application
 
+Laboratory infrastructure - hardware: <br />
+- Terasic DE0-Nano board <br />
+- Desktop computer <br />
+- USB-A - miniUSB cable <br />
+Laboratory infrastructure - software: <br />
+- Windows 10 <br />
+- Intel Quartus Prime Standard Edition 23.1 design suite <br />
+
 Folder organization: <br />
 ./code: assembler and C programs <br />
 ./labs: pdf documents for hands-on exercises <br />
