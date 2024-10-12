@@ -11,7 +11,7 @@ Lab 4. Nios V multiprocessor implementation, parallel programming, and performan
 
 Lab 5. Nios V processor with customized architecture for a software application
 
-Folder organization:
+Folder organization: <br />
 ./code: assembler a C programs <br />
 ./labs: pdf documents for hands-on exercises <br />
 ./SoC_configurations: binary files to configure the FPGA of a Terasic DE0-Nano board <br />
