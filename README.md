@@ -18,7 +18,7 @@ Laboratory infrastructure - hardware: <br />
 
 Laboratory infrastructure - software: <br />
 - Windows 10 <br />
-- Intel Quartus Prime Standard Edition 23.1 design suite <br />
+- Intel Quartus Prime Standard Edition Design Suite 23.1 <br />
 
 Folder organization: <br />
 ./code: assembler and C programs <br />
