@@ -12,8 +12,8 @@ Lab 4. Nios V multiprocessor implementation, parallel programming, and performan
 Lab 5. Nios V processor with customized architecture for a software application
 
 Folder organization:
-./code: assembler a C programs
-./labs: pdf documents for hands-on exercises
-./SoC_configurations: binary files to configure the FPGA of a Terasic DE0-Nano board
+./code: assembler a C programs <br />
+./labs: pdf documents for hands-on exercises <br />
+./SoC_configurations: binary files to configure the FPGA of a Terasic DE0-Nano board <br />
 
 Another [repository](https://github.com/vipl-dbd/ComputerArchitecture_NiosII) includes similar hands-on exercises using the software Nios II processor.
