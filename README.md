@@ -5,7 +5,7 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 [Lab 2. Performance evaluation of the memory hierarchy of a computer and reverse engineering of the data cache memory](labs/lab2/lab2tutorial.pdf)
 
-Lab 3. Performance evaluation of pipelined processors
+[Lab 3. Performance evaluation of pipelined processors](labs/lab3/lab3tutorial.pdf)
 
 Lab 4. Nios V multiprocessor implementation, parallel programming, and performance evaluation
 
