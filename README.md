@@ -3,7 +3,7 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 [Lab 1. RISC-V instruction set architecture and programming of NiosV/m processor](labs/lab1/lab1tutorial.pdf)
 
-Lab 2. Performance evaluation of the memory hierarchy of a computer and reverse engineering of the data cache memory
+[Lab 2. Performance evaluation of the memory hierarchy of a computer and reverse engineering of the data cache memory](labs/lab2/lab2tutorial.pdf)
 
 Lab 3. Performance evaluation of pipelined processors
 
