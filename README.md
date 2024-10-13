@@ -25,4 +25,4 @@ Folder organization: <br />
 ./labs: pdf documents for hands-on exercises <br />
 ./SoC_configurations: binary files to configure the FPGA of a Terasic DE0-Nano board <br />
 
-Another [repository](https://github.com/vipl-dbd/ComputerArchitecture_NiosII) includes similar hands-on exercises using the Nios II soft processor.
+Another [repository](https://github.com/vipl-dbd/ComputerArchitecture_NiosII) includes similar hands-on exercises using the Nios II soft processor, which have been used in the training of more than 1,000 computer science undergraduate students for more than 10 years.
