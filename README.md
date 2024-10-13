@@ -7,9 +7,9 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 [Lab 3. Performance evaluation of pipelined processors](labs/lab3/lab3tutorial.pdf)
 
-Lab 4. Nios V multiprocessor implementation, parallel programming, and performance evaluation
+[Lab 4. Nios V multiprocessor implementation, parallel programming, and performance evaluation](labs/lab4/lab4tutorial.pdf)
 
-Lab 5. Nios V processor with customized architecture for a software application
+[Lab 5. Nios V processor with customized architecture for a software application](labs/lab5/lab5tutorial.pdf)
 
 Laboratory infrastructure - hardware: <br />
 - Terasic DE0-Nano board <br />
