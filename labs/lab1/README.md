@@ -1,4 +1,4 @@
-# Computer Architecture hands-on exercises based on the Nios V soft processors
+# Computer Architecture hands-on exercises based on the Nios V soft processors - LAB1
 Hands-on exercises for the Computer Architecture course at the [University of Las Palmas de Gran Canaria (Spain)](https://internacional.ulpgc.es/en/) using Nios V-based soft SoCs and DE0-Nano board
 
 Lab 1. RISC-V instruction set architecture and programming of NiosV/m processor
