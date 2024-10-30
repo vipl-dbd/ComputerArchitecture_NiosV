@@ -1,5 +1,5 @@
 # YAML 1.2
-# Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
+# Metadata for citation according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
 message: If you use this repository, please cite it as below.
 title: "Hands-on experience for undergraduate Computer Architecture courses using
@@ -9,3 +9,11 @@ authors:
 - given-names: Domingo
   family-names: Benitez
   affiliation: University of Las Palmas de Gran Canaria
+references:
+- conference: 
+  name: "2024 First Annual Soft RISC-V Systems Workshop"
+  date-end: "2024-11-08"
+  date-start: "2024-11-07"
+identifiers:
+- doi: 
+  value: https://github.com/vipl-dbd/ComputerArchitecture_NiosV/blob/main/benitezSRvSnov24paper.pdf
