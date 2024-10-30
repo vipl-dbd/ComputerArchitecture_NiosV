@@ -24,7 +24,9 @@ preferred-citation:
     given-names: "Domingo"
   title: "Hands-on experience for undergraduate Computer Architecture courses using
 Nios V-based soft SoCs and real board"
-  conference: "2024 First Annual Soft RISC-V Systems Workshop"
+  conference: 
+    name: "2024 First Annual Soft RISC-V Systems Workshop"
+    year: 2024
 
 
 
