@@ -2,10 +2,9 @@
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
 message: If you use this repository, please cite it as below.
-# FIXME title as repository name might not be the best name, please make human readable
-title: DOI 2 citation format file generator
+title: "Hands-on experience for undergraduate Computer Architecture courses using
+Nios V-based soft SoCs and real board"
 doi: https://github.com/vipl-dbd/ComputerArchitecture_NiosV/blob/main/benitezSRvSnov24paper.pdf
-# FIXME splitting of full names is error prone, please check if given/family name are correct
 authors:
 - given-names: Domingo
   family-names: Benitez
