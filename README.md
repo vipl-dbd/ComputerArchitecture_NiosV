@@ -26,3 +26,10 @@ Folder organization: <br />
 ./SoC_configurations: binary files to configure the FPGA of a Terasic DE0-Nano board <br />
 
 Another [repository](https://github.com/vipl-dbd/ComputerArchitecture_NiosII) includes similar hands-on exercises using the Nios II soft processor that have been used in the training of more than 1,000 computer science undergraduate students for more than 10 years.
+
+## Citation
+Benitez, D. (2024). 
+Hands-on experience for undergraduate Computer Architecture courses using Nios V-based soft SoCs and real board. 
+2024 First Annual Soft RISC-V Systems Workshop.
+https://github.com/vipl-dbd/ComputerArchitecture_NiosV/blob/main/benitezSRvSnov24paper.pdf
+
