@@ -17,3 +17,14 @@ references:
 identifiers:
 - doi: 
   value: https://github.com/vipl-dbd/ComputerArchitecture_NiosV/blob/main/benitezSRvSnov24paper.pdf
+preferred-citation:
+  type: conference-paper
+  authors: 
+  - family-names: "Benitez"
+    given-names: "Domingo"
+  title: "Hands-on experience for undergraduate Computer Architecture courses using
+Nios V-based soft SoCs and real board"
+  conference: "2024 First Annual Soft RISC-V Systems Workshop"
+
+
+
