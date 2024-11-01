@@ -4,6 +4,7 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 Lab 1. RISC-V instruction set architecture and programming of NiosV/m processor
 [(Tutorial)](lab1tutorial.pdf)
 [(Slides)](lab1slides.pdf)
+[(Video)](LEDs_small.mp4)
 
 Laboratory infrastructure - hardware: <br />
 - Terasic DE0-Nano board <br />
