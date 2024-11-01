@@ -6,6 +6,10 @@ Lab 1. RISC-V instruction set architecture and programming of NiosV/m processor
 [(Slides)](lab1slides.pdf)
 [(Video)](LEDs_small.mp4)
 
+<video controls="" width="800" height="500" muted="" loop="" autoplay="">
+<source src="https://github.com/vipl-dbd/ComputerArchitecture_NiosV/blob/main/labs/lab1/LEDs_small.mp4" type="video/mp4">
+</video>
+
 Laboratory infrastructure - hardware: <br />
 - Terasic DE0-Nano board <br />
 - Desktop computer <br />
