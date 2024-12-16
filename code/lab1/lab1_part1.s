@@ -5,9 +5,9 @@
  * 	1. displays a rotating pattern on the green LEDG
  * 	2. if KEY[1] is pressed, uses the SW switches as the pattern
 
-Nios V
-Domingo Benitez
-Mayo 2024
+ * Adapted to Nios V
+ * by Domingo Benitez
+ * date: May 2024
 ********************************************************************************/
 	.text		/* executable code follows */
 	.global	_start
