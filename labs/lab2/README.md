@@ -4,7 +4,7 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 Lab 2. Performance evaluation of the memory hierarchy of a computer and reverse engineering of the data cache memory
 [(Tutorial)](lab2tutorial.pdf)
 [(Slides)](lab2slides.pdf)
-[(Video)] (Lab2Part1_NVm_g_small.mp4)
+[(Video)](Lab2Part1_NVm_g_small.mp4)
 
 Laboratory infrastructure - hardware: <br />
 - Terasic DE0-Nano board <br />
