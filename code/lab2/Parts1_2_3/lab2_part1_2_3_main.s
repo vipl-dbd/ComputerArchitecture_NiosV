@@ -28,7 +28,7 @@ _start:
 	/* mtvec, se inicializa el reg. CSR Machine Trap-Vector Base-Add. Reg. con el puntero de memoria
 	donde empieza la rutina de excepciones; hay que hacerlo porque NiosV/g lo pone a 0x0900 0000 (CAMBIADO!) 
 	*/
-	/*li 		s2, 0x08000000 */					/* direccion inicial exceptions en on-chip SRAM */
+	/*li 		s2, 0x08000000  */					/* direccion inicial exceptions en on-chip SRAM */
 	li 		s2, 0x0 					/* direccion inicial exceptions en SDRAM */
 	csrw 	mtvec, s2 
 
@@ -69,7 +69,7 @@ _start:
 	/* inicializar Interval_timer del SoC, no del Nios-V/m, puerto base: 0x10002000 */
 	la 		s2, 0x10002000		
 
-	/* counter start value: 1/(50 MHz) x (0x3F00000, 0d15728640)= 1321,20 ms, 32 bits, se divide en 2 half-word (16 bits): 0x03F0 (MSB), 0x0000 (LSB) */
+	/* counter start value: 1/(50 MHz) x (0x3F00000, 0d15728640)= 1321.20 ms, 32 bits, se divide en 2 half-word (16 bits): 0x03F0 (MSB), 0x0000 (LSB) */
 	la 		s3, 0x3F00000		
 
 	sh 		s3, 8(s2)			/* se guarda la half-word menos significativa en 0x10002008 */
@@ -111,7 +111,7 @@ END:
 	jal  	ra, PRINT 			/* se llama a la rutina PRINT */
 
 	la   	a0, CONTADOR_VALOR_BCD
-	jal  	ra, PRINT_REGISTRO	/* se muestra el número de intervalos de 33 ms en el terminal de AMP */
+	jal  	ra, PRINT_REGISTRO	/* se muestra el número de intervalos de 1321.20 ms en el terminal de AMP */
 
 	la   	a0, TEXTO5
 	jal  	ra, PRINT 			/* se llama a la rutina PRINT */
@@ -124,13 +124,13 @@ IDLE:
 .data
 
 TEXTO_MAIN:
-.asciz "\nI am at lab2_part1 with NiosV/m ... running ..."
+.asciz "\ni am at lab2_part1 with nios v/M ... running ..."
 
 TEXTO4:
-.asciz "\n\nTime: "
+.asciz "\n\ntime: "
 
 TEXTO5:
-.asciz " 33-ms intervals\n\nEnd of program\n"
+.asciz " 1321-ms intervals\n\nend of program\n"
 
 /* IMPORTANTE: el espacio de memoria que ocupa el texto NO ES potencia de 2 y las variables siguientes estarían desalineadas al entorno de palabra; por eso se incluye una directiva de alineación ".aling 2" que alinea a entornos de palabra con direcciones terminadas en: 0,4,8,C; esto fue la solución a que no me funcionaba lw de una constante en memoria CONTADOR_VALOR */
 
