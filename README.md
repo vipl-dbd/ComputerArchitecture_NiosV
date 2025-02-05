@@ -31,7 +31,7 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 ## Lab calendar
 
-<ins>Week 1.</ins> Lab 1: summary, DE0-Nano board, Altera software tools, Nios II instruction set architecture, assembler programming, exercises. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf), [video (Spanish)](https://alumnosulpgc-my.sharepoint.com/:v:/g/personal/domingo_benitez_ulpgc_es/EVO66mSOE-dNrrI2DZl7N1kBPb6miODAcXxCLPsFmelAZA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=VIDyYF).
+<ins>Week 1.</ins> Lab 1: summary, DE0-Nano board, Altera software tools, Nios II instruction set architecture, assembler programming, exercises. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf).
 
 
 ## Nios II
