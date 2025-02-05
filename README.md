@@ -29,6 +29,11 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 2025 winter semester: 171 students enrolled, 7 student groups.
 
+## Lab calendar
+
+<ins>Week 1.</ins> Lab 1: summary, DE0-Nano board, Altera software tools, Nios II instruction set architecture, assembler programming, exercises. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf), [video (Spanish)](https://alumnosulpgc-my.sharepoint.com/:v:/g/personal/domingo_benitez_ulpgc_es/EVO66mSOE-dNrrI2DZl7N1kBPb6miODAcXxCLPsFmelAZA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=VIDyYF).
+
+
 ## Nios II
 
 Another [repository](https://github.com/vipl-dbd/ComputerArchitecture_NiosII) includes similar hands-on exercises using the Nios II soft processor that have been used in the training of more than 1,000 computer science undergraduate students for more than 10 years.
