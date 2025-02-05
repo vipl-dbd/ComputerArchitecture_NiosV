@@ -11,19 +11,25 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 [Lab 5. Nios V processor with customized architecture for a software application](labs/lab5/lab5tutorial.pdf)
 
-Laboratory infrastructure - hardware: <br />
+## Laboratory infrastructure - hardware: <br />
 - Terasic DE0-Nano board <br />
 - Desktop computer <br />
 - USB-A - miniUSB cable <br />
 
-Laboratory infrastructure - software: <br />
+## Laboratory infrastructure - software: <br />
 - Windows 10 <br />
 - Intel Quartus Prime Standard Edition Design Suite 23.1 <br />
 
-Folder organization: <br />
-./code: assembler and C programs <br />
-./labs: pdf documents for hands-on exercises <br />
-./SoC_configurations: binary files to configure the FPGA of a Terasic DE0-Nano board <br />
+## Folder organization: <br />
+[code](code): assembler and C programs <br />
+[labs](labs): pdf documents for hands-on exercises <br />
+[SoC_configurations](SoC_configurations): binary files to configure the FPGA of a Terasic DE0-Nano board <br />
+
+## Current academic work
+
+2025 winter semester: 171 students enrolled, 7 student groups.
+
+## Nios II
 
 Another [repository](https://github.com/vipl-dbd/ComputerArchitecture_NiosII) includes similar hands-on exercises using the Nios II soft processor that have been used in the training of more than 1,000 computer science undergraduate students for more than 10 years.
 
