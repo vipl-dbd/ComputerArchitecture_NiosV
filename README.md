@@ -1,5 +1,5 @@
 # Computer Architecture hands-on exercises based on the Nios V soft processors
-Hands-on exercises for the Computer Architecture course at the [University of Las Palmas de Gran Canaria (Spain)](https://internacional.ulpgc.es/en/) using Nios V-based soft SoCs and DE0-Nano board
+Hands-on exercises for the Computer Architecture course at the [University of Las Palmas de Gran Canaria (Spain)](https://internacional.ulpgc.es/en/) using Nios V-based soft SoCs and the DE0-Nano board
 
 [Lab 1. RISC-V instruction set architecture and programming of NiosV/m processor](labs/lab1/lab1tutorial.pdf)
 
@@ -29,14 +29,15 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 2025 winter semester: 171 students enrolled, 7 student groups.
 
-## Lab calendar (15 weeks)
+## Lab calendar (30 lab hours, 15 2-hour sessions, 1 lab-session/week)
 
 <ins>Week 1.</ins> Lab 1: summary, DE0-Nano board, Altera software tools, Nios II instruction set architecture, assembler programming, exercises. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf).
 
 <ins>Week 2.</ins> Lab 1: subroutines, modification of a loaded instruction code, exercises: Fibonacci series, binary multiplication, dot product, binary division. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf)
 
 ## Topics
-Labs are based on principles presented in 30 lectures during the semester. Them main topics are: methodology for performance evaluation of RISC computers, microarchitecture of pipelined processors and its efficient programming, performance evaluation of cache memories, design and evaluation of main memory, static scheduling of instructions, out-of-order instruction execution, microarchitecture and evaluation of superscalar processors, VLIW architecture, parallel computing using shared memory architectures, GPUs, multicomputers and application specific instruction set processors.
+
+Labs are based on principles presented in 30 one-hour lectures during the semester in parallel with the lab sessions. The main topics covered are: methodology for performance evaluation of RISC computers, microarchitecture of pipelined processors and its efficient programming, performance evaluation of cache memories, design and performance evaluation of main memory, static scheduling of instructions, out-of-order instruction execution, microarchitecture and evaluation of superscalar processors, VLIW architectures and microarchitectures, parallel computing using shared memory multi-core architectures, GPUs, multicomputers and application specific instruction set processors.
 
 ## Nios II
 
