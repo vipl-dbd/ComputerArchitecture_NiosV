@@ -35,9 +35,17 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 <ins>Week 2.</ins> Lab 1: subroutines, modification of a loaded instruction code, exercises: Fibonacci series, binary multiplication, dot product, binary division. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf)
 
+<ins>Week 3.</ins> Lab 1: test of developed assembly code projects on the DE0-Nano board. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf)
+
+<ins>Week 4.</ins> Lab 1: exam. Hours: 2 (laboratory) + 2 (homework). 
+
 ## Topics
 
-Labs are based on principles presented in 30 one-hour lectures during the semester in parallel with the lab sessions. The main topics covered are: methodology for performance evaluation of RISC computers, microarchitecture of pipelined processors and its efficient programming, performance evaluation of cache memories, design and performance evaluation of main memory, static scheduling of instructions, out-of-order instruction execution, microarchitecture and evaluation of superscalar processors, VLIW architectures and microarchitectures, parallel computing using shared memory multi-core architectures, GPUs, multicomputers and application specific instruction set processors.
+Labs are based on principles presented in 30 one-hour lectures during the semester in parallel with the lab sessions. The main topics covered are: methodology for performance evaluation of RISC computers, microarchitecture of pipelined processors and its efficient programming, performance evaluation of cache memories, design and performance evaluation of main memory, static scheduling of instructions, out-of-order instruction execution, microarchitecture and evaluation of superscalar processors, VLIW architectures and microarchitectures, high-performance parallel computing using shared memory multi-core architectures, GPUs, multicomputers and application specific instruction set processors.
+
+## Skills gained by students in Computer Architecture
+
+Practical experience on Computer Architecture using real FPGA-based hardware, assembly language programming using a RISC-V instruction set and several bare-metal computer systems, multi-thread programming, code optimization using information from the computer architecture, performance evaluation of processors and multiprocessors, performance evaluation of memory hierarchy including main memory and caches, programming, performance evaluation and customization of the microarchitecture of a general-purpose processor integrated into a System-on-Chip.
 
 ## Nios II
 
