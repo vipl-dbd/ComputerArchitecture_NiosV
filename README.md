@@ -33,9 +33,9 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 <ins>Week 1.</ins> Lab 1: summary, DE0-Nano board, Altera software tools, Nios II instruction set architecture, assembler programming, exercises. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf).
 
-<ins>Week 2.</ins> Lab 1: subroutines, modification of a loaded instruction code, exercises: Fibonacci series, binary multiplication, dot product, binary division. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf)
+<ins>Week 2.</ins> Lab 1: subroutines, modification of a loaded instruction code, exercises: Fibonacci series, binary multiplication, dot product, binary division. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf).
 
-<ins>Week 3.</ins> Lab 1: test of developed assembly code projects on the DE0-Nano board. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf)
+<ins>Week 3.</ins> Lab 1: test of developed assembly code projects on the DE0-Nano board. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf).
 
 <ins>Week 4.</ins> Lab 1: exam. Hours: 2 (laboratory) + 2 (homework). 
 
