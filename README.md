@@ -45,7 +45,7 @@ Labs are based on principles presented in 30 one-hour lectures during the semest
 
 ## Skills gained by students in Computer Architecture
 
-Practical experience on Computer Architecture using real FPGA-based hardware, assembly language programming using a RISC-V instruction set and several bare-metal computer systems, multi-thread programming, code optimization using information from the computer architecture, performance evaluation of processors and multiprocessors, performance evaluation of memory hierarchy including main memory and caches, programming, performance evaluation and customization of the microarchitecture of a general-purpose processor integrated into a System-on-Chip.
+Practical experience on Computer Architecture using real FPGA-based hardware, assembly language programming using the RISC-V instruction set and several bare-metal computer systems, multi-thread programming, code optimization using information from the computer architecture, performance evaluation of processors and multiprocessors, performance evaluation of memory hierarchy including main memory and caches, programming, performance evaluation and customization of the microarchitecture of a general-purpose processor integrated into a System-on-Chip.
 
 ## Nios II
 
