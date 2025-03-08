@@ -39,9 +39,9 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 <ins>Week 4.</ins> Lab 1: exam. Hours: 2 (laboratory) + 2 (homework). 
 
-<ins>Week 5.</ins> memory hierarchy and its implementation on the DE0-Nano board. Lab 2. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab2/lab2tutorial.pdf).
+<ins>Week 5.</ins> Lab 2: memory hierarchy and its implementation on the DE0-Nano board. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab2/lab2tutorial.pdf).
 
-<ins>Week 5.</ins> cache memory reverse engineering. Lab 2. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab2/lab2tutorial.pdf).
+<ins>Week 5.</ins> Lab 2: cache memory reverse engineering. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab2/lab2tutorial.pdf).
 
 ## Topics
 
