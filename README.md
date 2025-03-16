@@ -43,6 +43,10 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 <ins>Week 6.</ins> Lab 2: cache memory reverse engineering. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab2/lab2tutorial.pdf).
 
+<ins>Week 7.</ins> Lab 2: cache memory reverse engineering. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab2/lab2tutorial.pdf).
+
+<ins>Week 8.</ins> Lab 2: exam. Hours: 2 (laboratory) + 2 (homework). 
+
 ## Topics
 
 Labs are based on principles presented in 30 one-hour lectures during the semester in parallel with the lab sessions. The main topics covered are: methodology for performance evaluation of RISC computers, microarchitecture of pipelined processors and its efficient programming, performance evaluation of cache memories, design and performance evaluation of main memory, static scheduling of instructions, out-of-order instruction execution, microarchitecture and evaluation of superscalar processors, VLIW architectures and microarchitectures, high-performance parallel computing using shared memory multi-core architectures, GPUs, multicomputers and application specific instruction set processors.
@@ -53,7 +57,7 @@ Practical experience on Computer Architecture using real FPGA-based hardware, as
 
 ## Professional opportunities that demand these skills across industries
 
-Platform Hardware and Systems Engineer (development of hardware and systems), System and Solution Architect ((micro)architecture simulation, workloads characterization, C++/Python/Perl programming), GPU Platform Hardware Design Engineer (RTL coding, and simulation for graphics IPs), Platform Solutions Architect (translate requirements and key performance indicators into platform architecture encompassing hardware, software, SoCs, and other components designed to support a variety of systems, solutions, and applications), Platform Validation Engineer (develop verification plans for coherency/ memory/ power management/ security/ domains of pre-silicon SoC/SS), Security Research Engineer (design and implementation of scientific research projects for secure computing, cryptographic algorithms, communication, memory and networking), Silicon Architecture Engineer (logic & circuit design, physical design, validation and debug).
+Performance Architect (workload analysis, understand bottlenecks in cores and SoCs), CPU Core Microarchitecture/RTL Engineer (RTL design for sections of the processor pipeline, define the high-level architecture), Platform Hardware and Systems Engineer (development of hardware and systems), System and Solution Architect ((micro)architecture simulation, workloads characterization, C++/Python/Perl programming), GPU Platform Hardware Design Engineer (RTL coding, and simulation for graphics IPs), Platform Solutions Architect (translate requirements and key performance indicators into platform architecture encompassing hardware, software, SoCs, and other components designed to support a variety of systems, solutions, and applications), Platform Validation Engineer (develop verification plans for coherency/ memory/ power management/ security/ domains of pre-silicon SoC/SS), Security Research Engineer (design and implementation of scientific research projects for secure computing, cryptographic algorithms, communication, memory and networking), Silicon Architecture Engineer (logic & circuit design, physical design, validation and debug).
 
 ## Nios II
 
