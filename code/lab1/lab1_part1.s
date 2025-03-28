@@ -65,7 +65,7 @@ DELAY:
 	addi	x7, x7, -1
 	bne	x7, x0, DELAY	
 
-	j   	zO_DISPLAY
+	j   	DO_DISPLAY
 
 rotl:
     sll  a2,   a0, a1
