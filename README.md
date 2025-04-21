@@ -49,6 +49,13 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 <ins>Week 9.</ins> Lab 3: counting executed instructions and calculating the average CPI (cycles per instruction). Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab3/lab3tutorial.pdf).
 
+<ins>Week 10.</ins> Lab 3: roofline curves for Nios II/e and Nios II/f  processors. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab3/lab3tutorial.pdf).
+
+<ins>Week 11.</ins> Lab 3: performance evaluation of instruction reordering. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab3/lab3tutorial.pdf).
+
+<ins>Week 12.</ins> Lab 3: exam. Hours: 2 (laboratory) + 2 (homework). 
+
+
 ## Topics
 
 Labs are based on principles presented in 30 one-hour lectures during the semester in parallel with the lab sessions. The main topics covered are: methodology for performance evaluation of RISC computers, microarchitecture of pipelined processors and its efficient programming, performance evaluation of cache memories, design and performance evaluation of main memory, static scheduling of instructions, out-of-order instruction execution, microarchitecture and evaluation of superscalar processors, VLIW architectures and microarchitectures, high-performance parallel computing using shared memory multi-core architectures, GPUs, multicomputers and application specific instruction set processors.
