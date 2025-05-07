@@ -55,6 +55,7 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 <ins>Week 12.</ins> Lab 3: exam. Hours: 2 (laboratory) + 2 (homework). 
 
+<ins>Week 13.</ins> Lab 4: Two tutorials for programming a Nios II/e multiprocessor. Hours: 2 (laboratory) + 2 (homework). 
 
 ## Topics
 
