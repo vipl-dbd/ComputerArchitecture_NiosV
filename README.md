@@ -57,6 +57,10 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 <ins>Week 13.</ins> Lab 4: Two tutorials for programming a Nios II/e multiprocessor. Hours: 2 (laboratory) + 2 (homework). 
 
+<ins>Week 14.</ins> Lab 4: Parallel programming of the matrix-vector algorithm and performance evaluation on two Nios V multiprocessors. Hours: 2 (laboratory) + 2 (homework). 
+
+<ins>Week 15.</ins> Lab 4: Parallel programming of the matrix-matrix algorithm and performance evaluation on two Nios V multiprocessors. Hours: 2 (laboratory) + 2 (homework). 
+
 ## Topics
 
 Labs are based on principles presented in 30 one-hour lectures during the semester in parallel with the lab sessions. The main topics covered are: methodology for performance evaluation of RISC computers, microarchitecture of pipelined processors and its efficient programming, performance evaluation of cache memories, design and performance evaluation of main memory, static scheduling of instructions, out-of-order instruction execution, microarchitecture and evaluation of superscalar processors, VLIW architectures and microarchitectures, high-performance parallel computing using shared memory multi-core architectures, GPUs, multicomputers and application specific instruction set processors.
