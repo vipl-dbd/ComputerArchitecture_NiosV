@@ -13,7 +13,7 @@ _start:
 	/* initialize base addresses of parallel ports */
 	la		x15, RESULT		/* x15: point to the start of data section */
 	lw		x16, 4(x15)		/* x16: counter, initialized with n */
-	addi	x17, x16, 8		/* x17: point to the first number */
+	addi	x17, x15, 8		/* x17: point to the first number */
 	lw		x18, (x17)		/* x18: largest number found */
 
 LOOP:
@@ -31,8 +31,8 @@ DONE:
 STOP:
 	j 		STOP			/* Remain here if done */
 
-.data
-
+.data						/* software variables follow */
+	
 RESULT:
 .skip 4						/* Space for the largest number found */
 

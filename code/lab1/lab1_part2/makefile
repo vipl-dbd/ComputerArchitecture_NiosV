@@ -35,7 +35,8 @@ download	:       ## Download the *.elf file into the main memory of the soft com
 	niosv-download.exe -r -g $(EXE)
 
 configure	:       ## Configure the FPGA of the DE0-Nano board.
-	quartus_pgm.exe -c 1 -m JTAG -o "p;C:/altera/12.1sp1/University_Program/NiosII_Computer_Systems/DE0-Nano/DE0-Nano_Basic_Computer_NiosVg/verilog/DE0_Nano_Basic_Computer.sof@1"
+	quartus_pgm.exe -c 1 -m JTAG -o "p;../../../../DE0_Nano_Basic_Computer.sof@1"
+	# quartus_pgm.exe -c 1 -m JTAG -o "p;C:/altera/12.1sp1/University_Program/NiosII_Computer_Systems/DE0-Nano/DE0-Nano_Basic_Computer_NiosVg/verilog/DE0_Nano_Basic_Computer.sof@1"
 
 clean		:       ## Clean compilation files.
 	rm $(EXE) *.obj *.objdump *.log *.hex
