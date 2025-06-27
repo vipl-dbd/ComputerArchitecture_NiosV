@@ -6,11 +6,11 @@ Lab 1. RISC-V instruction set architecture and programming of Nios V/m processor
 [(Slides)](lab1slides.pdf)
 [(Video)](LEDs_small.mp4)
 
-Summary:
-• Part I: executing an example program
-• Part II: designing and debugging a simple program
-• Part III: modify a machine instruction
-• Part IV: programming the multiplication
+Summary: <br />
+• Part I: executing an example program <br />
+• Part II: designing and debugging a simple program <br />
+• Part III: modify a machine instruction <br />
+• Part IV: programming the multiplication <br />
 
 Laboratory infrastructure - hardware: <br />
 - Terasic DE0-Nano board <br />
