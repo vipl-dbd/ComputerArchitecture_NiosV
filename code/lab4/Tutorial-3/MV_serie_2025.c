@@ -1,62 +1,62 @@
 //
-// Lab 4 - version: julio 2025
+// Lab 4 - Tutorial-3
 //
-// Multiplicacion Matriz x Vector, y = A . x
-// Version Secuencial
-// Tipo multiprocesador: 2 x Nios V/g
-// SOF file: C:\altera\24.1std\quartus\qdesigns\misProyectos\DE0-Nano_Basic_Computer_NiosVm_conSDRAM_dualCore_Q24\verilog\DE0_Nano_Basic_Computer.sof
-// Tipo procesador: Nios V/g, nombre: intel_niosv_g_0
+// Multiplication Matrix x Vector, y = A . x
+// Secuential version
+// Soft multiprocessor: 2 x Nios V/{m,g}
+// SOF file: DE0_Nano_Basic_Computer.sof
+// Core name: intel_niosv_m_0, intel_niosv_g_0
+//
+// Domingo Benitez, July 2025
 //
 #include <stdio.h>
-#include <altera_avalon_mutex.h>		// para controlador exclusion mutua
+#include <altera_avalon_mutex.h>	// for mutex driver
 #include <system.h>
-#include "sys/alt_stdio.h" 			// para alt_putstr
-// Timer, incluir el timestamp en BSP: boton dcho en BSP folder, Nios2 > BSP editor > cambiar system timer y timestamp timer
-#include <sys/alt_timestamp.h>
+#include "sys/alt_stdio.h" 		// for alt_putstr
+#include <sys/alt_timestamp.h>		// for timer
 
-// Zona de memoria compartida para matriz A y vectores x, y
+// Shared memory addresses for A matrix and x, y vectors
 volatile int * A	= (int *) 0x100000; 	// 16x16x4=1KiB: 0x100000 - 0x1003FF
 volatile int * x 	= (int *) 0x100400; 	// 16x1 x4=64 B: 0x100400 - 0x10043F
 volatile int * y	= (int *) 0x100800; 	// 16x1 x4=64 B: 0x100800 - 0x10083F
 
-#define m 16 					// numero de columnas de las matrices
-#define n 16 					// numero de filas de las matrices
+#define m 16 					// number of matrix columns 
+#define n 16 					// number of matrix rows
 
-int rank = 0; 					// hilo maestro para nucleo= CPU
+int rank = 0; 					// ID for master thread
 
-// Las siguientes constantes se encuentran definidas en fichero system.h
-#define tipoNiosV   ALT_CPU_ARCHITECTURE 				// "m" (Nios V/n), "g" (Nios V/g)
-#define nombreNiosV ALT_CPU_NAME 						// "intel_niosv_m_0" (nucleo 1), "intel_niosv_m_1" (nucleo 2)
-#define size_dCache ALT_CPU_DCACHE_SIZE				// tamanyo de la dCache
+// Constantí defiende in system.h
+#define tipoNiosV   ALT_CPU_ARCHITECTURE 	// "m" (Nios V/n), "g" (Nios V/g)
+#define nombreNiosV ALT_CPU_NAME 		// "intel_niosv_m_0" (master core), "intel_niosv_m_1" (slave core)
+#define size_dCache ALT_CPU_DCACHE_SIZE		// Data Cache size
 
 int iteraciones 	= 0x0;
 
 void dataInit(void){
 	unsigned int i=0, j=0, i1=0;
-   alt_printf("\nInicializa Matriz y Vector\n");
-   for (i=0; i<n; i++){
-		   x[i] = i;
-		   y[i] = 0;
-		   
+	alt_printf("\nInicializa Matriz y Vector\n");
+	for (i=0; i<n; i++){
+	   x[i] = i;
+	   y[i] = 0;	   
 	}
-   for (i=0; i<n; i++){
+	for (i=0; i<n; i++){
    		for(j=0; j<m; j++){
 	   		i1 = i * m + j;
-		      A[i1] = j;
-		   }
+			A[i1] = j;
+		}
 	}
 }
 
-// dataPrint : Inicializa zona memoria compartida
+// dataPrint: initialize shared memory 
 // ini_printf=1: printf de valores A, x, y
-// ini_printf=2: printf de direcciones A, x, y
+// ini_printf=2: printf addresses assigned to A, x, y
 int dataPrint(int ini_printf){
    int i=0, j=0;
    if (ini_printf == 1){
-	   alt_printf("\nPRINTF VALORES\n");
+	   alt_printf("\nPRINTF VALUES\n");
    }
    else if (ini_printf == 2){
-	   alt_printf("\nPRINTF DIRECCIONES\n");
+	   alt_printf("\nPRINTF ADDRESSES\n");
    }
    for (i=0; i<n; ++i){
 	   if (ini_printf == 1){
@@ -80,67 +80,60 @@ int dataPrint(int ini_printf){
 	   if (ini_printf == 1 || ini_printf == 2){
 		   alt_printf("\n");
 	   }
-	//
    }
    return 0;
 }
-//
 
 // main program
-//
+
 int main()
 {
-	 //int thread_count	= 1    ; 	// opciones: 1,2; numero de hilos
-	 unsigned int Niter		= 1000; 	// opciones: 1000,2000,10000,20000,...; veces repite matriz-vector
-	 int dumy, start, iteraciones = 0, timeInterval = 0, timeInterval2 = 0;
-	 alt_u32 freq=0;
-	 unsigned int i, j, time[5];
-	 char etiqueta_time[6][6]={"tStar","tInic","tFork","tComp","tJoin","tFina"};
+	unsigned int Niter = 1000; 	// options: 1000,2000,10000; number of repetitions
+	int dumy, start, iteraciones = 0, timeInterval = 0, timeInterval2 = 0;
+	alt_u32 freq=0;
+	unsigned int i, j, time[5];
+	char etiqueta_time[6][6]={"tStar","tInic","tFork","tComp","tJoin","tFina"};
 	 
   	alt_printf("\n\nMatriz x Vector Secuencial - CPU - BEGIN\n");
-  	//
   	alt_printf("\tNombre procesador Nios II\t: %s\n", nombreNiosV);
   	alt_printf("\tTipo procesador Nios II\t\t: %s\n", tipoNiosV);
   	printf("\tTamano dCache Nios II\t\t: %u bytes\n", size_dCache);
   	printf("\tHilos\t\t\t\t: Secuencial \n\tIteraciones\t\t\t: %u\n", Niter);
  	 
- 	// Inicializa el timestamp para medir tiempo en ciclos de reloj
+ 	// Initialize timestamp for measuring the number of clock cycles
  	start = alt_timestamp_start();
  	if(start < 0) {
-     		printf("\nTimestamp start -> FALLO!, %i\n", start);
+     		printf("\nTimestamp start -> LAILED!, %i\n", start);
      	}
      	else{
      		freq = alt_timestamp_freq() / 1e6;
-     		printf("\nTimestamp start -> OK!, frecuencia de reloj= %u MHz\n", (unsigned int) freq);
+     		printf("\nTimestamp start -> OK!, clock speed= %u MHz\n", (unsigned int) freq);
      	}
-	// time0: marca tiempo inicial
+	// time0: first time measure
 	time[0] = alt_timestamp();
 
 	//
 	// INCIALIZACION DE VARIABLES
 	//
-   dataInit();
+   	dataInit();
 
-	dataPrint(1);			// se visualizan los valores de la matriz A y vectores x, y
-	//dataPrint(2);			// se visualizan las direcciones de la matriz A y vectores x, y
+	dataPrint(1);			// Values of A, x, y are displayed 
 
-	// time1: marca tiempo inicial y final de Inicializacion
+	// time1: second time measure, end of initialization
 	time[1] = alt_timestamp();
 
 	//
-	// COMPUTO MAESTRO - Operacion Matriz x Vector - repetido Niter veces
-	// 2 hilos: cada hilo calcula la mitad de filas de la matriz C
-	//
-	// time2: marca tiempo inicial computo y final de FORK
+	// COMPUTING - Matrix x Vector repeated Niter times
 
+	// time2: third time measure, end of thread fork
 	time[2] = alt_timestamp();
 
 	unsigned int k1;
 	unsigned int local_n 	  = n;
-	unsigned int my_first_row = 0;		// 1a fila asignada a este nucleo
-	unsigned int my_last_row  = local_n - 1; // ultima fila asignada a este nucleo
+	unsigned int my_first_row = 0;		 // first matrix raw
+	unsigned int my_last_row  = local_n - 1; // last matrix raw
 
-	alt_printf("\nEmpieza el computo matriz-vector\n");
+	alt_printf("\nBegin computing matrix-vector\n");
 	
 	for (k1 = 0; k1 < Niter; k1++) {
 	   	iteraciones++;
@@ -153,33 +146,29 @@ int main()
 	    	}
 	}
 
+	// time3: fourth time measure, end of computing
 	time[3] = alt_timestamp();
 
-	//
-	// FINAL
-	//
-	// time4: Nueva marca de tiempo (parte final del programa)
-
+	// time4: fifth time measure, end of thread join
 	time[4] = alt_timestamp();
 
-	// printf de los tiempos medidos
+	// printf of time measurements
 	for (int k = 1; k < 5; k++){
 		timeInterval = (time[k] - time[0])   * 1e-3 / freq;
 		timeInterval2= (time[k] - time[k-1]) * 1e-3 / freq;
 		alt_printf("%s - ", nombreNiosV);
-		printf("%6s : time[%i]= %10u clk\t (%6u ms) intervalo= %6u ms\n",
+		printf("%6s : time[%i]= %10u clk\t (%6u ms) intervals= %6u ms\n",
 				&etiqueta_time[k][0], k, time[k], timeInterval, timeInterval2);
 	}
 
 	timeInterval = (time[4] - time[0]) * 1e-3 / freq;
 
-	printf("\n%s - %6s : time[%i]= %10u clk\t TiempoTotal= %6u ms\n",
+	printf("\n%s - %6s : time[%i]= %10u clk\t Total Time= %6u ms\n",
 			nombreNiosV, &etiqueta_time[5][0], 5, time[4], timeInterval);
 
-	dataPrint(1);			// se visualiza los valores de la matriz C resultante
-//
+	dataPrint(1);	// printf of final out A matrix
   	
-	alt_printf("\nFin del programa\n");
+	alt_printf("\nEnd of program\n");
 
   	return 0;
 }
