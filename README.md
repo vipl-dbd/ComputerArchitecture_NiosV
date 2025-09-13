@@ -31,6 +31,12 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 ## Lab calendar (30 lab hours, 15 2-hour sessions, 1 lab-session/week)
 
+Lab hours: 30
+2-hour sessions: 15
+Lab-sesson/week: 1
+
+[Schedule](LabCalendar.md)
+
 <ins>Week 1.</ins> Lab 1: summary, DE0-Nano board, Altera software tools, Nios II instruction set architecture, assembler programming, exercises. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf).
 
 <ins>Week 2.</ins> Lab 1: subroutines, modification of a loaded instruction code, exercises: Fibonacci series, binary multiplication, dot product, binary division. Hours: 2 (laboratory) + 2 (homework). Documents: [guide](labs/lab1/lab1tutorial.pdf).
