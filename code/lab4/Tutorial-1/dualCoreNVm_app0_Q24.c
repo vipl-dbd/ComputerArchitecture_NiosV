@@ -1,8 +1,9 @@
 /*
- * Lab Assignment 4
+ * Lab Assignment 4 - Tutorial-1
  *
- * Tutorial 1:  dualCoreNVm_app0_Q24.c
- * Serial version
+ * Source code:  dualCoreNVm_app0_Q24.c
+ *
+ * Serial version of a simple Hello World C program.
  *
  * Domingo Benitez
  * November 2024
