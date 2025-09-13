@@ -3,6 +3,7 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 Lab 4.  Nios V multiprocessor implementation, parallel programming, and performance evaluation
 [(Tutorial)](lab4tutorial.pdf)
+[(Slides)](lab4slides.pdf)
 
 Laboratory infrastructure - hardware: <br />
 - Terasic DE0-Nano board <br />
