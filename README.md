@@ -29,7 +29,7 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 
 2025 winter semester: 171 students enrolled, 7 student groups.
 
-## Lab calendar (30 lab hours, 15 2-hour sessions, 1 lab-session/week)
+## Lab calendar 
 
 Lab hours: 30 <br />
 2-hour sessions: 15 <br />
