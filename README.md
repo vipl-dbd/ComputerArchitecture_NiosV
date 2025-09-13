@@ -19,6 +19,7 @@ Hands-on exercises for the Computer Architecture course at the [University of La
 ## Laboratory infrastructure - software: <br />
 - Windows 10 <br />
 - Intel Quartus Prime Standard Edition Design Suite 23.1 <br />
+- Intel Quartus Prime Standard Edition Design Suite 24.1 <br />
 
 ## Folder organization: <br />
 [code](code): assembler and C programs <br />

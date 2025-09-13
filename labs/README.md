@@ -16,4 +16,5 @@ Laboratory infrastructure - hardware: <br />
 Laboratory infrastructure - software: <br />
 - Windows 10 <br />
 - Nios V Command Shell 23.1 Standard <br />
+- Nios V Command Shell 24.1 Standard <br />
 
