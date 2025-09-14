@@ -2,7 +2,7 @@
 // Lab 4 - Tutorial-3
 //
 // Multiplication Matrix x Vector, y = A . x
-// Secuential version
+// Serial version
 // Soft multiprocessor: 2 x Nios V/{m,g}
 // SOF file: DE0_Nano_Basic_Computer.sof
 // Core name: intel_niosv_m_0, intel_niosv_g_0
@@ -25,7 +25,7 @@ volatile int * y	= (int *) 0x100800; 	// 16x1 x4=64 B: 0x100800 - 0x10083F
 
 int rank = 0; 					// ID for master thread
 
-// Constantí defiende in system.h
+// Constants defined in system.h
 #define tipoNiosV   ALT_CPU_ARCHITECTURE 	// "m" (Nios V/n), "g" (Nios V/g)
 #define nombreNiosV ALT_CPU_NAME 		// "intel_niosv_m_0" (master core), "intel_niosv_m_1" (slave core)
 #define size_dCache ALT_CPU_DCACHE_SIZE		// Data Cache size
@@ -94,16 +94,15 @@ int main()
 	unsigned int i, j, time[5];
 	char etiqueta_time[6][6]={"tStar","tInic","tFork","tComp","tJoin","tFina"};
 	 
-  	alt_printf("\n\nMatriz x Vector Secuencial - CPU - BEGIN\n");
-  	alt_printf("\tNombre procesador Nios II\t: %s\n", nombreNiosV);
-  	alt_printf("\tTipo procesador Nios II\t\t: %s\n", tipoNiosV);
-  	printf("\tTamano dCache Nios II\t\t: %u bytes\n", size_dCache);
-  	printf("\tHilos\t\t\t\t: Secuencial \n\tIteraciones\t\t\t: %u\n", Niter);
+	alt_putstr("\n\nParallel Matrix x Vector - Master core - BEGIN\n");
+	printf("\tNios V processor name\t: %s\n", tipoNiosV);
+	printf("\tData cache size\t\t: %i bytes\n", size_dCache);
+	printf("\Threads\t\t\t\t: %i \n\Iterations\t\t\t: %i\n", thread_count, Niter);
  	 
  	// Initialize timestamp for measuring the number of clock cycles
  	start = alt_timestamp_start();
  	if(start < 0) {
-     		printf("\nTimestamp start -> LAILED!, %i\n", start);
+     		printf("\nTimestamp start -> FAILED!, %i\n", start);
      	}
      	else{
      		freq = alt_timestamp_freq() / 1e6;
@@ -113,7 +112,7 @@ int main()
 	time[0] = alt_timestamp();
 
 	//
-	// INCIALIZACION DE VARIABLES
+	// INITIALIZATION OF VARIABLES
 	//
    	dataInit();
 
