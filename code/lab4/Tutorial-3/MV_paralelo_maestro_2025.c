@@ -28,7 +28,7 @@ volatile unsigned int * message_buffer_Niter    = (unsigned int *) (MESSAGE_BUFF
 volatile int * A	= (int *) 0x100000; 	// 16x16x4=1KiB: 0x100000 - 0x1003FF
 volatile int * x 	= (int *) 0x100400; 	// 16x1 x4=64 B: 0x100400 - 0x10043F
 volatile int * y	= (int *) 0x100800; 	// 16x1 x4=64 B: 0x100800 - 0x10083F
-// C_DEL se utiliza para hacer un borrado completo de la dCache
+// C_DEL is used for erasing the contents of data cache and updating these data in main memory
 volatile int * A_DEL= (int *) 0x108000; // 0x108000 = 0x100000 + 0x8000 (32 KB)
 
 #define m 16 					// number of matrix columns 
@@ -36,7 +36,7 @@ volatile int * A_DEL= (int *) 0x108000; // 0x108000 = 0x100000 + 0x8000 (32 KB)
 
 #define sleepTime 100000			// 0.1 seconds
 
-int rank = 0; 					// master thread for core: intel_niosv_m_0
+int rank = 0; 					// master thread for core: intel_niosv_m_0 or intel_niosv_g_0
 
 // Constants defined in system.h
 #define tipoNiosV   ALT_CPU_ARCHITECTURE 	// "m" (Nios V/n), "g" (Nios V/g)
@@ -58,7 +58,7 @@ void flush_dCache(void){
 	   }
    }
    else {
-	   alt_putstr("\nNo se hace FLUSHmaestro porque dCache no existe\n");
+	   alt_putstr("\nCache flash is not done because there no data cache\n");
    }
 }
 
@@ -254,9 +254,8 @@ int main()
 	}
 
 	//
-	// JOIN - Sincronizacion de union
-	// Maestro inicializa variable compartida:
-	//    *(message_buffer_ptr_join) |= 1
+	// JOIN - Join synchronization
+	// Master thread updates shared variable: *(message_buffer_ptr_join) |= 1
 	//
 	// time3: fourth time measure, end of computing and begin of JOIN thread synchronization
 	time[3] = alt_timestamp();

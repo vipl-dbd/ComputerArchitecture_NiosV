@@ -1,46 +1,45 @@
 //
-// Lab 4 - version: july 2025
+// Lab 4 - Tutorial-3
 //
-// Multiplicacion Matriz x Vector, y = A . x
-// Version paralela - Hilo Esclavo
-// Tipo multiprocesador: 2 x Nios V/m
-// SOF file: C:\altera\24.1std\quartus\qdesigns\misProyectos\DE0-Nano_Basic_Computer_NiosVm_conSDRAM_dualCore_Q24\verilog\DE0_Nano_Basic_Computer.sof
-// Tipo procesador: Nios V/g, nombre: intel_niosv_g_1
+// Multiplication Matrix x Vector, y = A . x
+// Parallel version - Slave thread
+// Soft multiprocessor: 2 x Nios V/{m,g}
+// SOF file: DE0_Nano_Basic_Computer.sof
+// Core name: intel_niosv_m_1, intel_niosv_g_1
 //
-
+// Domingo Benitez, July 2025
+//
 #include <stdio.h>
 #include <altera_avalon_mutex.h>
 #include <system.h>
 
-// RAM para sincronizacion entre hilos, tamano total RAM= 20 bytes
-// Todas las variables se encuentran en una linea de cache (32 bytes)
-//
+// Shared RAM memory for synchronizing variables between threads, size= 20 bytes
+// All these variables are saved in a cache block (32 bytes)
 volatile unsigned int * message_buffer_ptr 		= (unsigned int *) MESSAGE_BUFFER_RAM_BASE;
 volatile unsigned int * message_buffer_ptr_join = (unsigned int *) (MESSAGE_BUFFER_RAM_BASE+4);
 volatile unsigned int * message_buffer_ptr_fork = (unsigned int *) (MESSAGE_BUFFER_RAM_BASE+8);
 volatile unsigned int * message_buffer_threads  = (unsigned int *) (MESSAGE_BUFFER_RAM_BASE+12);
 volatile unsigned int * message_buffer_Niter    = (unsigned int *) (MESSAGE_BUFFER_RAM_BASE+16);
 
-// Zona de memoria compartida para matriz A y vectores x, y
+// Shared memory for A matrix and x, y vectors
 volatile int * A	= (int *) 0x100000; 	// 16x16x4=1KiB: 0x100000 - 0x1003FF
 volatile int * x 	= (int *) 0x100400; 	// 16x1 x4=64 B: 0x100400 - 0x10043F
 volatile int * y	= (int *) 0x100800; 	// 16x1 x4=64 B: 0x100800 - 0x10083F
-// C_DEL se utiliza para hacer un borrado completo de la dCache
+// C_DEL is used for erasing the contents of data cache and updating these data in main memory
 volatile int * A_DEL= (int *) 0x10000; // 0x108000 = 0x100000 + 0x8000 (32 KB)
 
-#define m 16 					// numero de columnas de las matrices
-#define n 16 					// numero de filas de las matrices
+#define m 16 					// number of matrix columns 
+#define n 16 					// number of matrix rows
 
-int rank = 1; 					// hilo esclavo para nucleo= CPU2
+int rank = 1; 					// slave thread for core: intel_niosv_m_1 o intel_niosv_g_1
 
-#define size_dCache ALT_CPU_DCACHE_SIZE 	// tamano de la dCache, en system.h
+#define size_dCache ALT_CPU_DCACHE_SIZE		// Data Cache size
 
-// Flush de la dCache del esclavo:
-// el contenido de la dCache se guarda en memoria principal
+// Data cache flush for master core: data is forced to be saved in main memory
 void flush_dCache(void){
-// Se ejecuta solo cuando el tamano de dCache no es nulo
-// Se supone que el tamaño de dCache es 4 KiB= 32 x 32 x 4 bytes
-// Se supone que el tamano de bloque es de 32 bytes, 8 palabras
+// This procedure is executed only when cache size is non null
+// It is assumed that data cache size is 4 KiB= 32 x 32 x 4 bytes
+// It is assumed that cache block size is 8 words; para Nios V/g, it is a fixed value and cannot be modified
    if (size_dCache > 0) {
 	   int i, j, Nfila=32, Npauta=8;
 	   for (i = 0; i < Nfila; i++){
@@ -51,82 +50,82 @@ void flush_dCache(void){
 	}
 }
 
-// main : programa principal del hilo esclavo
+//
+// main : main programa of the slave thread
 //
 int main()
 {
-	int message_buffer_val 		= 0x0;  // variable local, copia de variable global
-	int message_buffer_val_fork 	= 0x0;  // variable local, copia de variable global
-	int message_buffer_val_join 	= 0x0;  // variable local, copia de variable global
-	int thread_count 		= 0;	// variable local, copia de variable global
-	int Niter		 	= 0;	// variable local, copia de variable global
-	*(message_buffer_ptr_fork)	|= 0;	// no hace nada, pero es necesario inicializar puntero porque si no se cuelga cuando se usa Nios II/s
+	int message_buffer_val 		= 0x0;  // local variable
+	int message_buffer_val_fork 	= 0x0;  // local variable
+	int message_buffer_val_join 	= 0x0;  // local variable
+	int thread_count 		= 0;	// local variable
+	int Niter		 	= 0;	// local variable
+	*(message_buffer_ptr_fork)	|= 0;	// pointer initialization
 
-  	 // direccion del dispositivo mutex de exclusion mutua 
+  	 // pointer to the mutex driver 
 	alt_mutex_dev* mutex = altera_avalon_mutex_open("/dev/message_buffer_mutex");
+
 	//
-	// FORK - Sincronizacion de Distribucion
-	// Esclavo inicializa variables compartidas: *(message_buffer_ptr_fork) |= 2
-	// cuando maestro inicializa : *(message_buffer_ptr) = 0x15
-	// Si el maestro observa que ambos hilos estan sincronizados, maestro inicializa *(message_buffer_ptr) = 5
-	// Ademas, el siguiente while se usa para leer:
-	//	  thread_count 	: numero de hilos activados
-	//	  Niter		: numero de iteraciones del computo
+	// FORK - thread synchronization
+	// Slave thread initializes shared variables:
+	// Slave updates shared variables: *(message_buffer_ptr_fork) |= 2
+	// after master thread has been initialized : *(message_buffer_ptr) = 0x15
+	// If master thread see both threads are synchronized, master thread updates: *(message_buffer_ptr) = 5
+	// In addition, a while loop is used to read:
+	//	  thread_count 	: number of activated threads 
+	//	  Niter		: number of algorithm repetitions 
 	//
 	while(message_buffer_val != 5) {
-		altera_avalon_mutex_lock(mutex,2);					// bloquea mutex 
+		altera_avalon_mutex_lock(mutex,2);					// lock mutex 
 
-		message_buffer_val 	= *(message_buffer_ptr); 			// lee valor almacenado en RAM 
-		thread_count		= *(message_buffer_threads);			// lee valor almacenado en RAM
-		Niter			= *(message_buffer_Niter);			// lee valor almacenado en RAM
+		message_buffer_val 	= *(message_buffer_ptr); 			// read shared RAM 
+		thread_count		= *(message_buffer_threads);			// read shared RAM
+		Niter			= *(message_buffer_Niter);			// read shared RAM
 
 		if(message_buffer_val == 15 && thread_count == 2) {
-			message_buffer_val_fork 	= *(message_buffer_ptr_fork); 	// lee valor almacenado en RAM 
-			message_buffer_val_fork 	|= 2;				// inicializa variable compartida
-			*(message_buffer_ptr_fork) 	= message_buffer_val_fork;	// escribe valor en RAM
+			message_buffer_val_fork 	= *(message_buffer_ptr_fork); 	// read shared RAM 
+			message_buffer_val_fork 	|= 2;				// updates shared variable 
+			*(message_buffer_ptr_fork) 	= message_buffer_val_fork;	// write in RAM
 		}
 
-		altera_avalon_mutex_unlock(mutex); 					// libera mutex 
+		altera_avalon_mutex_unlock(mutex); 					// free mutex 
 	}
 	//
-	// COMPUTO ESCLAVO - Operacion Matriz x Vector - repetido Niter veces
-	// 2 hilos: cada hilo calcula la mitad de elementos del vector resultado: y
-	// Hilo esclavo: la mitad inferior de la matriz A
+	// SLAVE COMPUTING - Matrix x Vector repeated Niter times
+	// 2 threads: each thread obtain half output matrix
+	// Slave thread: lower half of A matrix
 	//
 	int i, j, k1, iteraciones = 0, dumy;
 	int local_n 	 = n / thread_count;
-	int my_first_row = rank * local_n;		 	// 1a fila asignada a este hilo
-	int my_last_row  = (rank+1) * local_n - 1;  		// ultima fila asignada a este hilo
+	int my_first_row = rank * local_n;		 	// first matrix raw
+	int my_last_row  = (rank+1) * local_n - 1;  		// last matrix raw
 
 	for (k1 = 0; k1 < Niter; k1++) {
 	   	iteraciones++;
 		for (i=my_first_row; i<=my_last_row; i++){
-	       		dumy = y[i];
-		   	for(j=0; j<m; j++){
-			   dumy = dumy + A[i*m+j] * x[j];
-		   	}
-		   	y[i] = dumy;
-	    	}
+	       	dumy = y[i];
+		for(j=0; j<m; j++){
+		   dumy = dumy + A[i*m+j] * x[j];
+		}
+		y[i] = dumy;
+	    }
 	}
-	// se obliga a actualizar la memoria principal desde la dCache de CPU2
-	// para que el otro procesador, CPU, pueda leer estos resultados
+	// local data cache is updated (flushed) in main memory to be read by master thread
 	flush_dCache();
 	
 	//
-	// JOIN - Sincronizacion de union
-	// Esclavo inicializa variable compartidas:
-	//    *(message_buffer_ptr_join) |= 2
+	// JOIN - Join synchronization
+	// Slave thread updates shared variable: *(message_buffer_ptr_join) |= 2
 	//
 	while(message_buffer_val != 6 && thread_count == 2) {
-		altera_avalon_mutex_lock(mutex,2);				// bloquea mutex 
+		altera_avalon_mutex_lock(mutex,2);				// lock mutex 
 
-		message_buffer_val 		= *(message_buffer_ptr); 	// lee valor de variable compartida 
+		message_buffer_val 		= *(message_buffer_ptr); 	// read shared variable 
 
-		message_buffer_val_join 	= *(message_buffer_ptr_join); 	// lee valor de variable compartida 
-		message_buffer_val_join 	|= 2;				// indica que hilo esclavo ha llegado a JOIN
-		*(message_buffer_ptr_join) 	= message_buffer_val_join;	// escribe valor en RAM
+		message_buffer_val_join 	= *(message_buffer_ptr_join); 	// read shared variable 
+		message_buffer_val_join 	|= 2;				// master thread is in JOIN stage 		*(message_buffer_ptr_join) 	= message_buffer_val_join;	// write shared variable
 
-		altera_avalon_mutex_unlock(mutex); 				// libera mutex 
+		altera_avalon_mutex_unlock(mutex); 				// free mutex 
 	}
 
   	return 0;
