@@ -14,7 +14,7 @@
 
 int main(){
 
-/* address memory for a shared message buffer: 0x 400 0000 */
+/* address memory for a shared message buffer: 0x 0820 0000 */
 volatile int * message_buffer_ptr = (int *) MESSAGE_BUFFER_RAM_BASE;	
 
 printf("Hello, I am Semaforo_0\n");
