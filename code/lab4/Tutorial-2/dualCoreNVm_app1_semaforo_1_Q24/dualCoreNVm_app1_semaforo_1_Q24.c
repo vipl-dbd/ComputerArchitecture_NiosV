@@ -16,7 +16,7 @@
 
 int main(){
 
-// address memory for a shared message buffer: 0x 400 0000
+// address memory for a shared message buffer: 0x 0820 0000
 volatile int * message_buffer_ptr  = (int *) MESSAGE_BUFFER_RAM_BASE;	
 
 /* driver for mutex controller */
@@ -25,7 +25,7 @@ alt_mutex_dev* mutex = altera_avalon_mutex_open("/dev/message_buffer_mutex");
 int message_buffer_val 	= 0x0;
 
 while(1) {
-   /* Slave core wants to lock the mutex controller, using an ID 1with value 2 */
+   /* Slave core wants to lock the mutex controller, using an ID with value 2 */
    altera_avalon_mutex_lock(mutex,2);
 
     /* save message_buffer_val variable in the message buffer */
