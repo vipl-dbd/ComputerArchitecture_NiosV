@@ -1,13 +1,16 @@
-/* 
-* fichero: roofline.s, Arquitectura de Computadores, GII, EII 
+/************************************************************* 
+* file: roofline.s
 *
-* Medida de la relacion: op/seg vs. op/byte
+* Kernel for the benchNiosV2024_roofline benchmark
 *
-* Domingo Benitez, julio 2021
-*/
+* Domingo Benitez
+* July 2024
+*************************************************************/
 
-.equ Niter,1000	/* numero de iteraciones del bucle principal de este kernel */
-.equ NiterInternas,1 /* 1,5,20,47,400,500,2000; numero iteraciones de un bucle anidado, se modifica para dar mas o menos porcentaje de instrucciones de salto al numero total de instrucciones */
+.equ Niter,1000			/* numero de iteraciones del bucle principal de este kernel */
+.equ NiterInternas,2000 /* 1,5,20,47,400,500; numero iteraciones de un bucle anidado, 
+								   se modifica para dar mas o menos porcentaje de instrucciones 
+								   de salto al numero total de instrucciones */
 
 .global ROOFLINE
 ROOFLINE:

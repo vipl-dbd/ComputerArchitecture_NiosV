@@ -1,23 +1,24 @@
 /************************************************************* 
-* benchNIOSV2024_roofline.s (ver 1.0)
+* benchNIOSV2024_roofline.s 
 *
-* Programa para obtener la curva de limitaciones de prestaciones ALU:
-* operacionesALU/segundo versus operacionesALU/byte.
+* This program is used to obtain the roofline curve.
+* Y-axis: ALUoperations / second
+* X-axis: ALUoperations / memory-byte
 *
-* subrutinas: ROOFLINE, ESCRIBIR_JTAG, activaTimer, desactivaTimer, PRINT_JTAG 
+* subroutines: ROOFLINE, ESCRIBIR_JTAG, activaTimer, desactivaTimer, PRINT_JTAG 
 *
-* ficheros: DIV.s, escribir_jtag.s, roofline.s, BCD.s
+* files: DIV.s, escribir_jtag.s, roofline.s, BCD.s
 *
-* OLD: AC - Practica 3
 *
-* Domingo Benitez, Julio 2024
+* Domingo Benitez
+* July 2024
 *
 *************************************************************/
 .global _start
 _start:
 	li  	t0, 97			/* codigo ASCII letra 'a' */
 	la 		t1, 0x10001000	/* JTAG data register*/
-	la   	sp, 0x01FFFFFC	/* inicio de pila */
+	la   	sp, 0x08001FFC	/* inicio de pila */
 
 /* PRINT de un mensaje "TEXTOentrada" */
 verTEXTO: 
@@ -214,7 +215,7 @@ CONTADOR_VALOR_BCD:
 .align 2
 TEXTOentrada:
 .ascii "\n   "
-.asciz "\nAprieta la tecla a para empezar el benchmark en Nios V/m: "
+.asciz "\nAprieta la tecla a para empezar el benchmark: "
 
 TEXTO_nueva_linea:
 .ascii "\n\nContador (clk@50MHz):"

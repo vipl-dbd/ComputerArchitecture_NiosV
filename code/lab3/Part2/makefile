@@ -1,7 +1,9 @@
+#
 # makefile
-# genera un fichero *.elf con ISA RISC-V para el procesador NIOS-V/g
+# compile and link of the *.elf file using RISC-V ISA for the Nios V soft processor
 # Domingo Benitez
-# Junio 2024
+# June 2024
+#
 
 ROOT	= 	benchNIOSV2024_roofline
 SRC		=	$(ROOT).s
@@ -14,11 +16,11 @@ LD		= 	riscv32-unknown-elf-ld.exe
 RP		= 	niosv-stack-report 
 DUMP	= 	riscv32-unknown-elf-objdump 
 COPY	=	riscv32-unknown-elf-objcopy
-STACK	= 	--defsym __alt_stack_pointer=0x01FFFF00 	\
-			--defsym __alt_stack_base=0x02000000
-HEAP	= 	--defsym __alt_heap_limit=0x2000000 		\
-			--defsym __alt_heap_start=0x2000000 
-F_LD 	=	-g -T ../../prueba_bsp/linker.x -nostdlib -e _start 		\
+STACK	= 	--defsym __alt_stack_pointer=0x08001F00 	\
+			--defsym __alt_stack_base=0x08002000
+HEAP	= 	--defsym __alt_heap_limit=0x8002000 		\
+			--defsym __alt_heap_start=0x8002000 
+F_LD 	=	-g -T ../practica1_bsp/linker.x -nostdlib -e _start 		\
 			-u _start $(STACK) $(HEAP)
 
 all 		: 	## Compila y linka el programa principal y subrutinas.
@@ -48,11 +50,10 @@ download	:       ## Inicializa el programa en memoria de la FPGA de la placa DE0
 
 configure	:       ## Configura la placa DE0-Nano.
 	quartus_pgm -c 1 -m JTAG -o "p;../../../../DE0_Nano_Basic_Computer.sof@1"
+#	quartus_pgm -c 1 -m JTAG -o "p;C:/altera/12.1sp1/University_Program/NiosII_Computer_Systems/DE0-Nano/DE0-Nano_Basic_Computer_NiosVg/verilog/DE0_Nano_Basic_Computer.sof@1"
 
 clean		:       ## Borra varios ficheros de compilacion.
 	rm $(EXE) *.obj *.objdump *.log *.hex
 
 help		:       ## Muestra este help.
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
-
-
