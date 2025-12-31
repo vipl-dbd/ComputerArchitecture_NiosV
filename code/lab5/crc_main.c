@@ -58,15 +58,14 @@
 
 
 /* Modify these values to adjust the test being performed */
-#define NUMBER_OF_BUFFERS 32
-#define BUFFER_SIZE 256 /* in bytes */
+#define NUMBER_OF_BUFFERS 32 /* 32 */
+#define BUFFER_SIZE 256 /* 256, in bytes */
 
 /* Change the name of memory device according to what you are using
  *  e.g.: DDR_SDRAM_0 ##_SPAN
  *        SSRAM_0 ##_SPAN                                        
  */
 #define MEMORY_DEVICE_SIZE 32768
-
 
 /* Make sure there is room left for Nios II text, rodata, rwdata, stack,
  * and heap.  This software and the buffer space must fit within the
@@ -95,9 +94,6 @@
 #endif
 
 
-
-
-
 int main()
 {
   unsigned long buffer_counter, data_counter;
@@ -105,9 +101,6 @@ int main()
   unsigned long sw_fast_results[NUMBER_OF_BUFFERS];
   unsigned long ci_results[NUMBER_OF_BUFFERS];
   unsigned char random_data = 0x5A;
-  //unsigned long sw_slow_timeA, sw_slow_timeB;
- // unsigned long sw_fast_timeA, sw_fast_timeB;
- // unsigned long ci_timeA, ci_timeB;
 
   alt_u32 sw_slow_timeA, sw_slow_timeB;
   alt_u32 sw_fast_timeA, sw_fast_timeB;
@@ -121,7 +114,11 @@ int main()
   printf("System specification\n");
   printf("--------------------\n");
 
-  printf("System clock speed = %lu MHz\n", (unsigned long)ALT_CPU_FREQ /(unsigned long)1000000);
+  alt_u32 freq_MHz = (unsigned long)ALT_CPU_FREQ /(unsigned long)1000000;
+  alt_u32 freq_Hz  = (unsigned long)alt_timestamp_freq();
+
+  printf("System clock speed = %lu MHz\n", freq_MHz); //(unsigned long)ALT_CPU_FREQ /(unsigned long)1000000);
+  printf("System clock speed = %lu Hz\n", freq_Hz); //(unsigned long)alt_timestamp_freq());
   printf("Number of buffer locations = %d\n", NUMBER_OF_BUFFERS);
   printf("Size of each buffer = %d bytes\n\n\n", BUFFER_SIZE);
 
@@ -156,9 +153,10 @@ int main()
   {
     sw_slow_results[buffer_counter] = crcSlow(data_buffer_region[buffer_counter], BUFFER_SIZE);
   }
- sw_slow_timeB = alt_timestamp();
+  sw_slow_timeB = alt_timestamp();
 
-  printf("Completed\n\n\n");
+  //printf("Completed, time= %lu us %f s \n\n\n", (sw_slow_timeB - sw_slow_timeA)/freq_MHz, (float)(sw_slow_timeB - sw_slow_timeA)/(float)freq_Hz);
+  printf("Completed, interval= %f s \n\n\n", (float)(sw_slow_timeB - sw_slow_timeA)/(float)freq_Hz);
 
 
   /* Fast software CRC based on a lookup table implementation */
@@ -171,7 +169,8 @@ int main()
     sw_fast_results[buffer_counter] = crcFast(data_buffer_region[buffer_counter], BUFFER_SIZE);
   }
   sw_fast_timeB = alt_timestamp();
-  printf("Completed\n\n\n");
+
+  printf("Completed, interval= %f s \n\n\n", (float)(sw_fast_timeB - sw_fast_timeA)/(float)freq_Hz);
 
 
   /* Custom instruction CRC */
@@ -183,7 +182,8 @@ int main()
     ci_results[buffer_counter] = crcCI(data_buffer_region[buffer_counter], BUFFER_SIZE);
   }
   ci_timeB = alt_timestamp();
-  printf("Completed\n\n\n");
+
+  printf("Completed, interval= %f s \n\n\n", (float)(ci_timeB - ci_timeA)/(float)freq_Hz);
 
   /* Validation of results */  
   printf("Validating the CRC results from all implementations\n");
@@ -205,20 +205,20 @@ int main()
   // Report processing times
   printf("Processing time for each implementation\n"); // time (s) = count / freq		// time (ms) = count*1000 / freq 
   printf("---------------------------------------\n");
-  printf("Software CRC = %.2lu ms\n", 1000*((unsigned long)(sw_slow_timeB-sw_slow_timeA))/((unsigned long)alt_timestamp_freq()));
-  printf("Optimized software CRC = %.2lu ms\n", 1000*((unsigned long)(sw_fast_timeB-sw_fast_timeA))/((unsigned long)alt_timestamp_freq()));
-  printf("Custom instruction CRC = %.2lu ms\n\n\n", 1000*((unsigned long)(ci_timeB-ci_timeA))/((unsigned long)alt_timestamp_freq()));
+  printf("Software CRC = %.2f ms\n", (1000*(float)(sw_slow_timeB-sw_slow_timeA))/((float)alt_timestamp_freq()));
+  printf("Optimized software CRC = %.2f ms\n", (1000*(float)(sw_fast_timeB-sw_fast_timeA))/((float)alt_timestamp_freq()));
+  printf("Custom instruction CRC = %.2f ms\n\n\n", (1000*(float)(ci_timeB-ci_timeA))/((float)alt_timestamp_freq()));
 
   printf("Processing throughput for each implementation\n"); // throughput (bps) = total bits / time(s) 	// throughput (Kbps) = total bits / 1000*time(s)
   printf("---------------------------------------------\n");
-  printf("Software CRC = %.2lu Kbps\n", (8 * NUMBER_OF_BUFFERS * BUFFER_SIZE)/(1000*(unsigned long)(sw_slow_timeB-sw_slow_timeA)/((unsigned long)alt_timestamp_freq())));
-  printf("Optimized software CRC = %.2lu Kbps\n", (8 * NUMBER_OF_BUFFERS * BUFFER_SIZE)/(1000*(unsigned long)(sw_fast_timeB-sw_fast_timeA)/((unsigned long)alt_timestamp_freq())));
-  printf("Custom instruction CRC = %.2lu Kbps\n\n\n", (8 * NUMBER_OF_BUFFERS * BUFFER_SIZE)/(1000*(unsigned long)(ci_timeB-ci_timeA)/((unsigned long)alt_timestamp_freq())));
+  printf("Software CRC = %.2f Mbps\n", (8.0 * NUMBER_OF_BUFFERS * BUFFER_SIZE)/(1000000.0*(float)(sw_slow_timeB-sw_slow_timeA)/((float)alt_timestamp_freq())));
+  printf("Optimized software CRC = %.2f Mbps\n", (8.0 * NUMBER_OF_BUFFERS * BUFFER_SIZE)/(1000000.0*(float)(sw_fast_timeB-sw_fast_timeA)/((float)alt_timestamp_freq())));
+  printf("Custom instruction CRC = %.2f Mbps\n\n\n", (8.0 * NUMBER_OF_BUFFERS * BUFFER_SIZE)/(1000000.0*(float)(ci_timeB-ci_timeA)/((float)alt_timestamp_freq())));
 
   printf("Speedup ratio\n");
   printf("-------------\n");
-  printf("Custom instruction CRC vs software CRC = %lu\n", (1000*((unsigned long)(sw_slow_timeB-sw_slow_timeA))/((unsigned long)alt_timestamp_freq()))/(1000*((unsigned long)(ci_timeB-ci_timeA))/((unsigned long)alt_timestamp_freq())));
-  printf("Custom instruction CRC vs optimized software CRC = %lu\n", (1000*((unsigned long)(sw_fast_timeB-sw_fast_timeA))/((unsigned long)alt_timestamp_freq()))/(1000*((unsigned long)(ci_timeB-ci_timeA))/((unsigned long)alt_timestamp_freq())));
-  printf("Optimized software CRC vs software CRC= %lu\n", (1000*((unsigned long)(sw_slow_timeB-sw_slow_timeA))/((unsigned long)alt_timestamp_freq()))/(1000*((unsigned long)(sw_fast_timeB-sw_fast_timeA))/((unsigned long)alt_timestamp_freq())));
+  printf("Custom instruction CRC vs software CRC = %.2fx\n", (1000*((float)(sw_slow_timeB-sw_slow_timeA))/((float)alt_timestamp_freq()))/(1000*((float)(ci_timeB-ci_timeA))/((float)alt_timestamp_freq())));
+  printf("Custom instruction CRC vs optimized software CRC = %.2fx\n", (1000*((float)(sw_fast_timeB-sw_fast_timeA))/((float)alt_timestamp_freq()))/(1000*((float)(ci_timeB-ci_timeA))/((float)alt_timestamp_freq())));
+  printf("Optimized software CRC vs software CRC= %.2fx\n", (1000*((float)(sw_slow_timeB-sw_slow_timeA))/((float)alt_timestamp_freq()))/(1000*((float)(sw_fast_timeB-sw_fast_timeA))/((float)alt_timestamp_freq())));
   return 0;
 }
