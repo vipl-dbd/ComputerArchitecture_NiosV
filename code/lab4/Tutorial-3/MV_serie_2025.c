@@ -91,7 +91,8 @@ int main()
 	unsigned int Niter = 1000; 	// options: 1000,2000,10000; number of repetitions
 	int dumy, start, iteraciones = 0, timeInterval = 0, timeInterval2 = 0;
 	alt_u32 freq=0;
-	unsigned int i, j, time[5];
+	unsigned int i, j; //, time[5];
+   long long unsigned time[5];
 	char etiqueta_time[6][6]={"tStar","tInic","tFork","tComp","tJoin","tFina"};
 	 
 	alt_putstr("\n\nParallel Matrix x Vector - Master core - BEGIN\n");
@@ -156,13 +157,13 @@ int main()
 		timeInterval = (time[k] - time[0])   * 1e-3 / freq;
 		timeInterval2= (time[k] - time[k-1]) * 1e-3 / freq;
 		alt_printf("%s - ", nombreNiosV);
-		printf("%6s : time[%i]= %10u clk\t (%6u ms) intervals= %6u ms\n",
+		printf("%6s : time[%i]= %10llu clk\t (%6u ms) intervals= %6u ms\n",
 				&etiqueta_time[k][0], k, time[k], timeInterval, timeInterval2);
 	}
 
 	timeInterval = (time[4] - time[0]) * 1e-3 / freq;
 
-	printf("\n%s - %6s : time[%i]= %10u clk\t Total Time= %6u ms\n",
+	printf("\n%s - %6s : time[%i]= %10llu clk\t Total Time= %6u ms\n",
 			nombreNiosV, &etiqueta_time[5][0], 5, time[4], timeInterval);
 
 	dataPrint(1);	// printf of final out A matrix
