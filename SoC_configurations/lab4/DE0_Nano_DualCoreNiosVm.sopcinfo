@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="nios_system" kind="nios_system" version="1.0" fabric="QSYS">
  <!-- Format version 24.1 1077 (Future versions may contain additional information.) -->
- <!-- 2025.07.03.13:02:14 -->
+ <!-- 2025.11.24.11:25:03 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1751544134</value>
+  <value>1763983502</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -4520,7 +4520,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.COUNTER_SIZE</name>
-   <value>32</value>
+   <value>64</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.FIXED_PERIOD</name>
@@ -4596,7 +4596,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="counterSize">
    <type>int</type>
-   <value>32</value>
+   <value>64</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -4718,7 +4718,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="slave_address_width">
    <type>int</type>
-   <value>3</value>
+   <value>4</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -4888,7 +4888,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>8</value>
+    <value>16</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -5187,7 +5187,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>address</name>
     <direction>Input</direction>
-    <width>3</width>
+    <width>4</width>
     <role>address</role>
    </port>
    <port>
@@ -10120,7 +10120,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x0' end='0x2000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='intel_niosv_m_0.dm_agent' start='0x2000000' end='0x2010000' type='intel_niosv_m.dm_agent' /><slave name='intel_niosv_m_0.timer_sw_agent' start='0x2010000' end='0x2010040' type='intel_niosv_m.timer_sw_agent' /><slave name='Onchip_memory_SRAM.s2' start='0x8000000' end='0x8002000' type='altera_avalon_onchip_memory2.s2' /><slave name='message_buffer_ram.s1' start='0x8200000' end='0x8200400' type='altera_avalon_onchip_memory2.s1' /><slave name='message_buffer_mutex.s1' start='0x8200400' end='0x8200408' type='altera_avalon_mutex.s1' /><slave name='Onchip_memory.s2' start='0x9000000' end='0x9002000' type='altera_avalon_onchip_memory2.s2' /><slave name='Green_LEDs.avalon_parallel_port_slave' start='0x10000010' end='0x10000020' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Dip_switches.avalon_parallel_port_slave' start='0x10000040' end='0x10000050' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Pushbuttons.avalon_parallel_port_slave' start='0x10000050' end='0x10000060' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Expansion_JP1.avalon_parallel_port_slave' start='0x10000060' end='0x10000070' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Expansion_JP2.avalon_parallel_port_slave' start='0x10000070' end='0x10000080' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Expansion_JP3.avalon_parallel_port_slave' start='0x10000080' end='0x10000090' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Expansion_JP3_In.avalon_parallel_port_slave' start='0x10000090' end='0x100000A0' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='JTAG_UART.avalon_jtag_slave' start='0x10001000' end='0x10001008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='Interval_timer.s1' start='0x10002000' end='0x10002020' type='altera_avalon_timer.s1' /><slave name='sysid.control_slave' start='0x10002020' end='0x10002028' type='altera_avalon_sysid_qsys.control_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x0' end='0x2000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='intel_niosv_m_0.dm_agent' start='0x2000000' end='0x2010000' type='intel_niosv_m.dm_agent' /><slave name='intel_niosv_m_0.timer_sw_agent' start='0x2010000' end='0x2010040' type='intel_niosv_m.timer_sw_agent' /><slave name='Onchip_memory_SRAM.s2' start='0x8000000' end='0x8002000' type='altera_avalon_onchip_memory2.s2' /><slave name='message_buffer_ram.s1' start='0x8200000' end='0x8200400' type='altera_avalon_onchip_memory2.s1' /><slave name='message_buffer_mutex.s1' start='0x8200400' end='0x8200408' type='altera_avalon_mutex.s1' /><slave name='Onchip_memory.s2' start='0x9000000' end='0x9002000' type='altera_avalon_onchip_memory2.s2' /><slave name='Green_LEDs.avalon_parallel_port_slave' start='0x10000010' end='0x10000020' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Dip_switches.avalon_parallel_port_slave' start='0x10000040' end='0x10000050' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Pushbuttons.avalon_parallel_port_slave' start='0x10000050' end='0x10000060' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Expansion_JP1.avalon_parallel_port_slave' start='0x10000060' end='0x10000070' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Expansion_JP2.avalon_parallel_port_slave' start='0x10000070' end='0x10000080' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Expansion_JP3.avalon_parallel_port_slave' start='0x10000080' end='0x10000090' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='Expansion_JP3_In.avalon_parallel_port_slave' start='0x10000090' end='0x100000A0' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /><slave name='JTAG_UART.avalon_jtag_slave' start='0x10001000' end='0x10001008' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='Interval_timer.s1' start='0x10002000' end='0x10002040' type='altera_avalon_timer.s1' /><slave name='sysid.control_slave' start='0x10002040' end='0x10002048' type='altera_avalon_sysid_qsys.control_slave' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -11407,7 +11407,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>sysid</moduleName>
     <slaveName>control_slave</slaveName>
     <name>sysid.control_slave</name>
-    <baseAddress>268443680</baseAddress>
+    <baseAddress>268443712</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -11424,7 +11424,7 @@ parameters are a RESULT of the module parameters. -->
     <slaveName>s1</slaveName>
     <name>Interval_timer.s1</name>
     <baseAddress>268443648</baseAddress>
-    <span>32</span>
+    <span>64</span>
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
@@ -12067,7 +12067,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="dataSlaveMapParam">
    <type>java.lang.String</type>
-   <value><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x0' end='0x2000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='intel_niosv_m_1.timer_sw_agent' start='0x2020000' end='0x2020040' type='intel_niosv_m.timer_sw_agent' /><slave name='intel_niosv_m_1.dm_agent' start='0x2030000' end='0x2040000' type='intel_niosv_m.dm_agent' /><slave name='Onchip_memory_SRAM.s2' start='0x8000000' end='0x8002000' type='altera_avalon_onchip_memory2.s2' /><slave name='message_buffer_ram.s1' start='0x8200000' end='0x8200400' type='altera_avalon_onchip_memory2.s1' /><slave name='message_buffer_mutex.s1' start='0x8200400' end='0x8200408' type='altera_avalon_mutex.s1' /><slave name='Onchip_memory.s2' start='0x9000000' end='0x9002000' type='altera_avalon_onchip_memory2.s2' /><slave name='sysid.control_slave' start='0x10002020' end='0x10002028' type='altera_avalon_sysid_qsys.control_slave' /></address-map>]]></value>
+   <value><![CDATA[<address-map><slave name='new_sdram_controller_0.s1' start='0x0' end='0x2000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='intel_niosv_m_1.timer_sw_agent' start='0x2020000' end='0x2020040' type='intel_niosv_m.timer_sw_agent' /><slave name='intel_niosv_m_1.dm_agent' start='0x2030000' end='0x2040000' type='intel_niosv_m.dm_agent' /><slave name='Onchip_memory_SRAM.s2' start='0x8000000' end='0x8002000' type='altera_avalon_onchip_memory2.s2' /><slave name='message_buffer_ram.s1' start='0x8200000' end='0x8200400' type='altera_avalon_onchip_memory2.s1' /><slave name='message_buffer_mutex.s1' start='0x8200400' end='0x8200408' type='altera_avalon_mutex.s1' /><slave name='Onchip_memory.s2' start='0x9000000' end='0x9002000' type='altera_avalon_onchip_memory2.s2' /><slave name='sysid.control_slave' start='0x10002040' end='0x10002048' type='altera_avalon_sysid_qsys.control_slave' /></address-map>]]></value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -13231,7 +13231,7 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>sysid</moduleName>
     <slaveName>control_slave</slaveName>
     <name>sysid.control_slave</name>
-    <baseAddress>268443680</baseAddress>
+    <baseAddress>268443712</baseAddress>
     <span>8</span>
    </memoryBlock>
    <memoryBlock>
@@ -16050,7 +16050,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1751544134</value>
+   <value>1763983502</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -16070,7 +16070,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1751544134</value>
+   <value>1763983502</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -16086,7 +16086,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1751544134</value>
+   <value>1763983502</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -16967,7 +16967,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x10002020</value>
+   <value>0x10002040</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -17018,7 +17018,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x10002020</value>
+   <value>0x10002040</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
